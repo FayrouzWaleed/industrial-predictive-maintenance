@@ -1,0 +1,40 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment variables and secrets
+.env
+.env.*
+
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE settings
+.vscode/
+
+# Local datasets
+data/*.csv
+data/*.xlsx
+data/*.zip
+
+# Generated model artifacts
+model/*.joblib
+model/*.pkl
+
+# Python test and coverage files
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Streamlit local settings
+.streamlit/secrets.toml
