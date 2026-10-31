@@ -23,7 +23,6 @@ desktop.ini
 .vscode/
 
 # Local datasets
-data/*.csv
 data/*.xlsx
 data/*.zip
 
