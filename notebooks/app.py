@@ -12,6 +12,9 @@ import streamlit as st
 from sklearn.metrics import classification_report, confusion_matrix
 
 import pm_core as pm
+from pathlib import Path
+import joblib
+
 
 st.set_page_config(page_title="Predictive Maintenance", page_icon="🏭", layout="wide", initial_sidebar_state="expanded")
 
@@ -21,8 +24,13 @@ st.caption("AI4I 2020 dataset · failure-type classifier tuned to minimise false
 # ----------------------------------------------------------------------------
 # Data + models (cached: trained once per session)
 # ----------------------------------------------------------------------------
-@st.cache_resource(show_spinner="Training models (about 10 seconds)...")
+BUNDLE_PATH = Path(__file__).resolve().parent / "bundle.joblib"
+
+
+@st.cache_resource(show_spinner="Loading models...")
 def get_bundle(csv_bytes, csv_path):
+    if csv_bytes is None and BUNDLE_PATH.exists():
+        return joblib.load(BUNDLE_PATH)
     raw = pd.read_csv(io.BytesIO(csv_bytes)) if csv_bytes else pd.read_csv(csv_path)
     return pm.train_bundle(raw)
 
