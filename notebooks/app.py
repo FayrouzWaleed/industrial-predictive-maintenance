@@ -13,8 +13,10 @@ from sklearn.metrics import classification_report, confusion_matrix
 
 import pm_core as pm
 
-st.set_page_config(page_title="Predictive Maintenance", page_icon="🏭", layout="wide")
+st.set_page_config(page_title="Predictive Maintenance", page_icon="🏭", layout="wide", initial_sidebar_state="expanded")
 
+st.title("Industrial Predictive Maintenance Dashboard")
+st.caption("AI4I 2020 dataset · failure-type classifier tuned to minimise false alarms (FDR)")
 
 # ----------------------------------------------------------------------------
 # Data + models (cached: trained once per session)
@@ -69,8 +71,6 @@ with st.sidebar:
         threshold = st.slider("Threshold", 0.05, 0.95, 0.50, 0.05)
     st.metric("Active threshold", f"{threshold:.2f}")
 
-st.title("Industrial Predictive Maintenance Dashboard")
-st.caption("AI4I 2020 dataset · failure-type classifier tuned to minimise false alarms (FDR)")
 
 tabs = st.tabs(["📊 Overview", "🔗 Lead indicator", "🎯 Models & threshold",
                 "💰 Cost-sensitive", "🚨 Anomaly detection", "🔮 Live prediction"])
